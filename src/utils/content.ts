@@ -21,7 +21,7 @@ export async function getLinkMarkdown(url: string) {
 }
 
 function replaceRelativeImageLinks(content: string, currentDocUrl: string): string {
-  return content.replace(/!\[(.*?)\]\((\.\.\/)*([^)]+)\)/g, (match, altText, dots, path) => {
+  return content.replace(/!\[(.*?)\]\(((\.\.\/)*)([^)]+)\)/g, (match, altText, dots, _, path) => {
     if (path.startsWith("http")) return match;
     return `![${altText}](${resolveRelativePath(path, currentDocUrl, dots)})`;
   });

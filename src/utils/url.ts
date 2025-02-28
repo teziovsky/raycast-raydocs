@@ -1,11 +1,11 @@
 export function resolveRelativePath(path: string, currentDocUrl: string, dots?: string): string {
   // Handle anchor links
-  if (path.startsWith("#")) {
+  if (path?.startsWith("#")) {
     return `${currentDocUrl}${path}`;
   }
 
   // Don't modify absolute URLs
-  if (path.startsWith("http")) {
+  if (path?.startsWith("http")) {
     return path;
   }
 
@@ -28,9 +28,9 @@ export function resolveRelativePath(path: string, currentDocUrl: string, dots?: 
   // Normalize path by removing leading '/' or './'
   let normalizedPath = path;
 
-  if (normalizedPath.startsWith("/")) {
+  if (normalizedPath?.startsWith("/")) {
     normalizedPath = normalizedPath.slice(1);
-  } else if (normalizedPath.startsWith("./")) {
+  } else if (normalizedPath?.startsWith("./")) {
     normalizedPath = normalizedPath.slice(2);
   }
 
