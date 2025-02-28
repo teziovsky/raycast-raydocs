@@ -13,6 +13,7 @@ export default function LinkContent({ link }: Props) {
   return (
     <Detail
       isLoading={isLoading}
+      navigationTitle={link.title}
       markdown={data || "**Loading...**"}
       actions={
         <ActionPanel>
