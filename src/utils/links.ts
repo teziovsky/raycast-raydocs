@@ -3,11 +3,8 @@ import crypto from "crypto";
 import fetch from "node-fetch";
 import showdown from "showdown";
 import { Link } from "@/types";
+import { docsUrl, linksUrl, markdownUrl } from "@/utils/constants";
 
-const docsUrl = "https://developers.raycast.com";
-const githubUrl = "https://raw.githubusercontent.com/raycast/extensions";
-const linksUrl = `${githubUrl}/gh-pages/SUMMARY.md`;
-const markdownUrl = `${githubUrl}/refs/heads/main/docs`;
 const converter = new showdown.Converter();
 
 export async function getLinks() {
@@ -51,30 +48,6 @@ export async function getLinks() {
       .toArray();
 
     return menuItems;
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-export async function getLinkMarkdown(url: string) {
-  try {
-    let res = await fetch(url).then((res) => res.text());
-
-    res = res.replaceAll(
-      /(\.\.\/)*.gitbook\/assets/g,
-      "https://raw.githubusercontent.com/raycast/extensions/refs/heads/main/docs/.gitbook/assets",
-    );
-
-    res = res.replaceAll(/\{% hint .* %\}\s+/g, "> ");
-    res = res.replaceAll("{% endhint %}", "");
-    res = res.replaceAll(/\{% tabs %\}\s+/g, "");
-    res = res.replaceAll(/\{% endtabs %\}\s+/g, "");
-    res = res.replaceAll(/{% tab title="([^"]+)" %}/g, "$1");
-    res = res.replaceAll(/\{% endtab %\}\s+/g, "");
-    res = res.replaceAll("<code>", "`");
-    res = res.replaceAll("</code>", "`");
-
-    return res;
   } catch (err) {
     console.error(err);
   }

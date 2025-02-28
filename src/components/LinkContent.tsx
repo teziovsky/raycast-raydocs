@@ -1,5 +1,5 @@
 import { Link } from "@/types";
-import { getLinkMarkdown } from "@/utils";
+import { getLinkMarkdown } from "@/utils/content";
 import { Action, ActionPanel, Detail } from "@raycast/api";
 import { usePromise } from "@raycast/utils";
 

@@ -23,9 +23,14 @@
   ],
   "tools": [
     {
-      "name": "ask-raycast-documentation",
-      "title": "Ask Raycast Documentation",
-      "description": "Get information and links to Raycast's documentation"
+      "name": "get-links",
+      "title": "Get Links",
+      "description": "Get links from the documentation"
+    },
+    {
+      "name": "get-link-content",
+      "title": "Get Link Content",
+      "description": "Get link content from the documentation"
     }
   ],
   "dependencies": {
